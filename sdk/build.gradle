@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 15  // 这个不能低于11， 因为需要用到硬件加速（for textureView)
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        ndk {
+            abiFilter "armeabi"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+//    compile project(':gpuimage-library')
+    compile 'com.getkeepsafe.relinker:relinker:1.2.1'
+    compile('com.github.piasy:rxandroidaudio:1.2.5') {
+        exclude module: 'rxjava'
+        exclude module: 'support-annotations'
+    }
+    compile "io.reactivex:rxjava:${rootProject.ext.rxJavaVersion}"
+    compile("io.reactivex:rxandroid:${rootProject.ext.rxAndroidVersion}") {
+        exclude module: 'rxjava'
+    }
+    compile "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
+//    compile 'com.google.code.findbugs:jsr305:3.0.1'
+    compile "com.jakewharton.timber:timber:${rootProject.ext.timberVersion}"
+    retrolambdaConfig "net.orfjackal.retrolambda:retrolambda:${rootProject.ext.retroLambdaVersion}"
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:support-annotations:24.2.0'
+}

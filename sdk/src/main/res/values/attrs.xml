@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--YoloWatchView-->
+    <declare-styleable name="YoloWatchView">
+        <attr name="clipFill" format="boolean" />
+    </declare-styleable>
+</resources>

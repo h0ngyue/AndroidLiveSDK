@@ -1,0 +1,106 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        // yolo private repo
+        maven {
+            url "http://47.88.103.205:8081/artifactory/libs-release-local"
+            credentials {
+                username = "${artifactory_username}"
+                password = "${artifactory_password}"
+            }
+        }
+    }
+    dependencies {
+//        tools.gradle 改成->2.2.2就会有以下bug：
+//            Execution failed for task ':yololive:externalNativeBuildArmDebug'.
+//                > java.io.FileNotFoundException: /Users/apple/Documents/yolo/longcheng/RTMP-Bootstrap/yololive/build/intermediates/cmake/arm/debug/obj/armeabi/libgnustl_shared.so (No such file or directory)
+        // 不确定是新的语法要求还是2.2.2的一个bug，暂时不改
+
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // for CameraCompat project compile
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.1"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "http://dl.bintray.com/piasy/maven"
+        }
+        // yolo private repo
+        maven {
+            url "http://47.88.103.205:8081/artifactory/libs-release-local"
+            credentials {
+                username = "${artifactory_username}"
+                password = "${artifactory_password}"
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    minSdkVersion = 15
+
+    compileSdkVersion = 23
+    buildToolsVersion = '23.0.3'
+
+    targetSdkVersion = 23
+    // http://stackoverflow.com/questions/32346402/libavcodec-so-has-text-relocations
+    androidSupportSdkVersion = '23.1.1'
+
+    versionCode = 2
+    versionName = "1.1.0.0918"
+
+    userName = 'h0ngyue'
+    developer = [
+            id   : 'h0ngyue',
+            name : 'h0ngyue',
+            email: 'buptever@163.com'
+    ]
+    license = [
+            id  : 'MIT',
+            name: 'The MIT License (MIT)',
+            url : 'http://opensource.org/licenses/MIT'
+    ]
+    groupName = 'com.github.h0ngyue'
+    artifactName = 'AndroidLiveSDK'
+    artifactDescription = 'Yolo Live SDK for Android!'
+    artifactLabels = ['LiveStream', 'Rtmp']
+
+    robolectricVersion = '3.0'
+    powermockVersion = '1.6.0'
+    xlogVersion = '2.1.1'
+    rxJavaVersion = '1.2.1'
+    rxAndroidVersion = '1.2.1'
+    timberVersion = '4.1.2'
+    autoParcelVersion = '0.3.1'
+    retroLambdaVersion = '2.3.0'
+    gpuImageVersion = '1.4.1'
+    fragmentArgsVersion = '3.0.2'
+    daggerVersion = '2.6'
+    autoBundleVersion = '3.1.0'
+    butterKnifeVersion = '8.2.1'
+    autoValueVersion = '1.3-rc2'
+    autoValueGsonVersion = '0.4.2'
+    okHttpVersion = '3.4.1'
+    retrofitVersion = '2.1.0'
+    stethoVersion = '1.3.1'
+    sqlDelightVersion = '0.4.4'
+
+    // for CameraCompat
+    releaseVersionCode = 9
+    releaseVersionName = '1.2.1'
+    androidCompileSdkVersion = compileSdkVersion//25
+    androidBuildToolsVersion = buildToolsVersion//'25.0.0'
+}
