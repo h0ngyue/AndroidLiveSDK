@@ -34,18 +34,18 @@ android {
 }
 
 dependencies {
-//    compile project(':gpuimage-library')
-    compile 'com.getkeepsafe.relinker:relinker:1.2.1'
     compile('com.github.piasy:rxandroidaudio:1.2.5') {
         exclude module: 'rxjava'
         exclude module: 'support-annotations'
     }
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
     compile "io.reactivex:rxjava:${rootProject.ext.rxJavaVersion}"
     compile("io.reactivex:rxandroid:${rootProject.ext.rxAndroidVersion}") {
         exclude module: 'rxjava'
     }
     compile "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
-//    compile 'com.google.code.findbugs:jsr305:3.0.1'
+    compile 'com.google.code.findbugs:jsr305:3.0.1'
     compile "com.jakewharton.timber:timber:${rootProject.ext.timberVersion}"
     retrolambdaConfig "net.orfjackal.retrolambda:retrolambda:${rootProject.ext.retroLambdaVersion}"
     compile 'org.greenrobot:eventbus:3.0.0'
