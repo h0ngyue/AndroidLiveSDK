@@ -1,5 +1,5 @@
  
-##quickStart(maybe not that quick)：
+##主播端quickStart(maybe not that quick)：
  
  * gradle:
  
@@ -123,3 +123,7 @@ public class App extends Application {
 ```
 
 一些细节可以直接参照demo里的设置
+
+##TODO
+* 完善demo，加入控制开关：开关美颜，开关闪关灯，前后置摄像头切换等，镜像（对应的功能已实现）
+* 完善demo，加入观看示例
