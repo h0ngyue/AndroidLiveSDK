@@ -3,14 +3,6 @@
 buildscript {
     repositories {
         jcenter()
-        // yolo private repo
-        maven {
-            url "http://47.88.103.205:8081/artifactory/libs-release-local"
-            credentials {
-                username = "${artifactory_username}"
-                password = "${artifactory_password}"
-            }
-        }
     }
     dependencies {
 //        tools.gradle 改成->2.2.2就会有以下bug：
@@ -34,14 +26,6 @@ allprojects {
         maven {
             url "http://dl.bintray.com/piasy/maven"
         }
-        // yolo private repo
-        maven {
-            url "http://47.88.103.205:8081/artifactory/libs-release-local"
-            credentials {
-                username = "${artifactory_username}"
-                password = "${artifactory_password}"
-            }
-        }
     }
 }
 
@@ -56,7 +40,6 @@ ext {
     buildToolsVersion = '23.0.3'
 
     targetSdkVersion = 23
-    // http://stackoverflow.com/questions/32346402/libavcodec-so-has-text-relocations
     androidSupportSdkVersion = '23.1.1'
 
     versionCode = 2
