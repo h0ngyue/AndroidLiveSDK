@@ -1,6 +1,12 @@
  
 ##quickStart(maybe not that quick)：
  
+ * gradle:
+ 
+ ```gradle
+ compile 'com.github.h0ngyue:AndroidLiveSDK:1.0.1'
+
+ ```
  
 ####step 1.布局植入BeautySurfaceView
  ```xml
