@@ -1,6 +1,8 @@
- ###quickStart(maybe not that quick)：
  
- ####step 1.布局植入BeautySurfaceView
+##quickStart(maybe not that quick)：
+ 
+ 
+####step 1.布局植入BeautySurfaceView
  ```xml
  <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,7 +20,7 @@
 </RelativeLayout>
  ```
  
- ####step 2 Activity里设置
+####step 2. Activity里设置
  ```java
  
  @Override
@@ -46,7 +48,7 @@ protected void onCreate(Bundle savedInstanceState) {
  
  ```
  
-####step 3 推流
+####step 3. 推流
 
 ```java
 @Override
